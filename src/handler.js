@@ -76,6 +76,8 @@ const addBookHandler = (request, h) => {
     .code(500);
 };
 
+// ============
+
 const getAllBooksHandler = (request, h) => {
   const { reading } = request.query;
 
@@ -112,6 +114,8 @@ const getAllBooksHandler = (request, h) => {
     .code(200);
 };
 
+// ============
+
 const getBookByIdHandler = (request, h) => {
   const { id } = request.params;
   const book = books.filter((n) => n.id === id)[0];
@@ -135,8 +139,9 @@ const getBookByIdHandler = (request, h) => {
     .code(200);
 };
 
+// ============
+
 const editBookByIdHandler = (request, h) => {
-  const { id } = request.params;
   const {
     name,
     year,
@@ -168,6 +173,7 @@ const editBookByIdHandler = (request, h) => {
       .code(400);
   }
 
+  const { id } = request.params;
   const index = books.findIndex((book) => book.id === id);
 
   if (index !== -1) {
@@ -198,6 +204,8 @@ const editBookByIdHandler = (request, h) => {
     })
     .code(404);
 };
+
+// ============
 
 const deleteBookByIdHandler = (request, h) => {
   const { id } = request.params;
